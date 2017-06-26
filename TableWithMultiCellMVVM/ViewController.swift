@@ -10,16 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let viewModel = ProfileViewModel()
+    
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView.register(UINib(nibName: NameAndPictureCell.identifier, bundle: nil), forCellReuseIdentifier: NameAndPictureCell.identifier)
+        tableView.register(UINib(nibName: FriendCell.identifier, bundle: nil), forCellReuseIdentifier: FriendCell.identifier)
+        tableView.register(UINib(nibName: AboutCell.identifier, bundle: nil), forCellReuseIdentifier: AboutCell.identifier)
+        tableView.register(UINib(nibName: EmailCell.identifier, bundle: nil), forCellReuseIdentifier: EmailCell.identifier)
+        tableView.register(UINib(nibName: AttributeCell.identifier, bundle: nil), forCellReuseIdentifier: AttributeCell.identifier)
+        tableView.dataSource = viewModel
+        tableView.estimatedRowHeight = 130
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
-
